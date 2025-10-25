@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sioma_biometrics/config/router/app_router.dart';
 import 'package:sioma_biometrics/presentation/screens/camera/camera_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(const ProviderScope(child: MyApp()));
@@ -15,9 +16,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      routerConfig: appRouter,
+      title: 'Sioma Biometrics',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        brightness: Brightness.dark,
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -33,9 +37,8 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.dark(),
       ),
-      home: const PermissionHandlerPage(),
     );
   }
 }
